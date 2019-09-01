@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-
 class DecisionTree(object):
 
     def __init__(self):
@@ -26,7 +23,7 @@ class DecisionTree(object):
         # Get distinct value of that attribute e.g Salary is node and Low,Med and High are values
         attValue = np.unique(df[node])
         # Create an empty dictionary to create tree
-        if tree is None:
+        if tree is None:                 
             tree={}
             tree[node] = {}
         # We make loop to construct a tree by calling this function recursively.
@@ -61,13 +58,13 @@ class DecisionTree(object):
 
     def predict_sample(self, sample, tree):
         """
-        This function is used to predict for any input sample(s)
+        This function is used to predict for any input sample(s) 
         Recursively we go through the tree that we built during training
         """
-        for nodes in tree.keys():
+        for nodes in tree.keys():  
             value = sample[nodes]
             tree = tree[nodes][value]
-            prediction = 0
+            prediction = 0    
             if type(tree) is dict:
                 prediction = self.predict_sample(sample, tree)
             else:
